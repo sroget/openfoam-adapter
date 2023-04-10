@@ -47,6 +47,17 @@ void preciceAdapter::FSI::Force::read(double* buffer, const unsigned int dim)
 
     // Here we assume that a force volVectorField exists, which is used by
     // the OpenFOAM solver
+    
+ /*   int bufferIndex = 0;
+
+    if (this->locationType_ == LocationType::volumeCenters)
+    {
+        forAll(Force_->ref(), i)
+        {
+            buffer[bufferIndex++] = Force_->ref()[i];
+        }
+    }
+*/
 
     // Set boundary forces
     for (unsigned int j = 0; j < patchIDs_.size(); j++)
@@ -78,7 +89,16 @@ void preciceAdapter::FSI::Force::read(double* buffer, const unsigned int dim)
 
 bool preciceAdapter::FSI::Force::isLocationTypeSupported(const bool meshConnectivity) const
 {
-    return (this->locationType_ == LocationType::faceCenters);
+    if (meshConnectivity)
+    {
+        return (this->locationType_ != LocationType::volumeCenters); // we do not support meshConnectivity for volumeCenters (yet)
+    }
+    else
+    {
+        return (this->locationType_ == LocationType::faceCenters || this->locationType_ == LocationType::volumeCenters);
+    }
+
+	//return (this->locationType_ == LocationType::faceCenters);
 }
 
 std::string preciceAdapter::FSI::Force::getDataName() const

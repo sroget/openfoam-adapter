@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version         2;
+    format          ascii;
+    class           dictionary;
+    object          parametersDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Parameters of the case
+// 
+// Since this dictionary file is included by other dictionary files,
+// parameter names start with 'param_' to avoid name collisions with 
+// other variables or expressions.
+
+// angle of attack of the net (deg)
+//   used to rotate the STL files of the net and the frame
+//param_AngleOfAttack        45;
+
+// flow velocity (m/s)
+param_flowVelocityX        0.5;
+
+// turbulence 
+param_turbulentK          0.0002939; 
+param_turbulentW          0.12247;
+
+// number of processors used for meshing and solving
+param_numberOfProcessors  32;
+
+// mesh refinement level
+//   integer from 0 (very coarse) to 9 (very detailed)
+//   snappyHexMeshDict includes file 
+//     "snappyHexMeshDict_refinement_$param_meshRefinementLevel"
+//   to define the desired refinement level, for example:
+//     snappyHexMeshDict_refinement_0    very coarse: for debug
+//     snappyHexMeshDict_refinement_5    for production
+//     snappyHexMeshDict_refinement_9    very fine: for mesh convergence
+//param_meshRefinementLevel  0;
+
+ 
+// ************************************************************************* //

@@ -1,0 +1,31 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      porousSurfaceDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thickness 0.02; // thickness of the final porous media created
+
+reference_thickness 0.05; // thickness used to calculate the porous resistance Coeffs
+
+grouping_angle	20; //15 // angle to group the triangles for creating the porous zones
+
+surfaces
+{
+  net_90 // name of the surface file in the directory constant/triSurface/
+  {
+    d   (51730 26379); // Dn Dt
+    f   (5.098 1.6984); // Cn Ct
+  }
+}

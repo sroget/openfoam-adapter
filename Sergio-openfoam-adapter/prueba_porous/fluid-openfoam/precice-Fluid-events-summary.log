@@ -1,0 +1,47 @@
+Run finished at Tue Mar 28 12:06:27 2023
+Global runtime       = 6386ms / 6.386s
+Number of processors = 1
+# Rank: 0
+
+                                          Event |      Count |  Total[ms] |    Max[ms] |    Min[ms] |    Avg[ms] | Time Ratio |
+-------------------------------------------------------------------------------------------------------------------------------
+                                        _GLOBAL |          1 |       6386 |       6386 |       6386 |       6386 |          1 |
+                                        advance |        100 |         17 |          0 |          0 |          0 |    0.00266 |
+                           advance/m2n.sendData |        100 |          6 |          0 |          0 |          0 |    0.00094 |
+                                      configure |          1 |          0 |          0 |          0 |          0 |          0 |
+                                       finalize |          1 |         43 |         43 |         43 |         43 |    0.00673 |
+                                     initialize |          1 |       5564 |       5564 |       5564 |       5564 |      0.871 |
+    initialize/m2n.broadcastVertexDistributions |          1 |          0 |          0 |          0 |          0 |          0 |
+           initialize/m2n.buildCommunicationMap |          1 |          0 |          0 |          0 |          0 |          0 |
+            initialize/m2n.createCommunications |          1 |          1 |          1 |          1 |          1 |   0.000157 |
+      initialize/m2n.exchangeVertexDistribution |          1 |         43 |         43 |         43 |         43 |    0.00673 |
+    initialize/m2n.requestPrimaryRankConnection |          1 |       5517 |       5517 |       5517 |       5517 |      0.864 |
+ initialize/m2n.requestSecondaryRanksConnection |          1 |         45 |         45 |         45 |         45 |    0.00705 |
+     initialize/partition.gatherMesh.Fluid-Mesh |          1 |          0 |          0 |          0 |          0 |          0 |
+    initialize/partition.prepareMesh.Fluid-Mesh |          1 |          0 |          0 |          0 |          0 |          0 |
+ initialize/partition.sendGlobalMesh.Fluid-Mesh |          1 |          0 |          0 |          0 |          0 |          0 |
+                                 initializeData |          1 |          0 |          0 |          0 |          0 |          0 |
+                                 solver.advance |        100 |        733 |         13 |          0 |          7 |      0.115 |
+                              solver.initialize |          1 |         27 |         27 |         27 |         27 |    0.00423 |
+
+
+                                           Name |        Max |  MaxOnRank |        Min |  MinOnRank |    Min/Max |
+------------------------------------------------------------------------------------------------------------------
+                                        _GLOBAL |       6386 |          0 |       6386 |          0 |          1 |
+                                        advance |          0 |          0 |          0 |          0 |          0 |
+                           advance/m2n.sendData |          0 |          0 |          0 |          0 |          0 |
+                                      configure |          0 |          0 |          0 |          0 |          0 |
+                                       finalize |         43 |          0 |         43 |          0 |          1 |
+                                     initialize |       5564 |          0 |       5564 |          0 |          1 |
+    initialize/m2n.broadcastVertexDistributions |          0 |          0 |          0 |          0 |          0 |
+           initialize/m2n.buildCommunicationMap |          0 |          0 |          0 |          0 |          0 |
+            initialize/m2n.createCommunications |          1 |          0 |          1 |          0 |          1 |
+      initialize/m2n.exchangeVertexDistribution |         43 |          0 |         43 |          0 |          1 |
+    initialize/m2n.requestPrimaryRankConnection |       5517 |          0 |       5517 |          0 |          1 |
+ initialize/m2n.requestSecondaryRanksConnection |         45 |          0 |         45 |          0 |          1 |
+     initialize/partition.gatherMesh.Fluid-Mesh |          0 |          0 |          0 |          0 |          0 |
+    initialize/partition.prepareMesh.Fluid-Mesh |          0 |          0 |          0 |          0 |          0 |
+ initialize/partition.sendGlobalMesh.Fluid-Mesh |          0 |          0 |          0 |          0 |          0 |
+                                 initializeData |          0 |          0 |          0 |          0 |          0 |
+                                 solver.advance |         13 |          0 |          0 |          0 |          0 |
+                              solver.initialize |         27 |          0 |         27 |          0 |          1 |

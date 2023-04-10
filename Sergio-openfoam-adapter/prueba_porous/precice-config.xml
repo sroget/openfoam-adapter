@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<precice-configuration>
+  <log>
+    <sink
+      filter="%Severity% > debug and %Rank% = 0"
+      format="---[precice] %ColorizedSeverity% %Message%"
+      enabled="true" />
+  </log>
+
+  <solver-interface dimensions="2">
+    <data:vector name="porousForce" />
+
+    <mesh name="Fluid-Mesh">
+      <use-data name="porousForce" />
+    </mesh>
+
+    <mesh name="Solid-Mesh">
+      <use-data name="porousForce" />
+    </mesh>
+
+    <participant name="Fluid">
+      <use-mesh name="Fluid-Mesh" provide="yes" />
+      <write-data name="porousForce" mesh="Fluid-Mesh" />
+    </participant>
+
+    <participant name="Solid">
+      <use-mesh name="Solid-Mesh" provide="yes" />
+      <use-mesh name="Fluid-Mesh" from="Fluid" />
+      <read-data name="porousForce" mesh="Solid-Mesh" />
+      <mapping:nearest-neighbor
+	direction="read"
+        from="Fluid-Mesh"
+        to="Solid-Mesh"
+        constraint="consistent" />
+    </participant>
+
+    <m2n:sockets from="Fluid" to="Solid" exchange-directory=".." />
+
+    <coupling-scheme:serial-explicit>
+      <time-window-size value="1" />
+      <max-time value="10" />
+      <participants first="Fluid" second="Solid" />
+      <exchange data="porousForce" mesh="Fluid-Mesh" from="Fluid" to="Solid" />
+    </coupling-scheme:serial-explicit>
+  </solver-interface>
+</precice-configuration>
